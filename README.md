@@ -5,6 +5,14 @@ Este é um exemplo de um processo ETL (Extração, Transformação e Carga) para
 Python 3.x
 Biblioteca requests para fazer chamadas à API
 Biblioteca csv para manipulação de arquivos CSV
+Arquivo com nome tickers.csv com a seguinte estrutura
+
+TickerID
+PETR4.SA
+VALE3.SA
+BOVA11.SA
+
+
 ## Passos do ETL
 ### 1. Extração
 A extração é realizada utilizando a API pública da yahoo finance. O script faz uma chamada à API para obter informações sobre as cotações dos ativos listados em um csv.
@@ -22,4 +30,4 @@ Certifique-se de ter Python 3.x instalado.
 Instale as bibliotecas necessárias executando pip install requests e pip install csv.
 Execute o script index.py.
 ## Resultados
-Após a execução bem-sucedida do ETL, os dados referente ao ativo e qual sua tendencia serão carregados no arquivo CSV result.csv.
+Após a execução bem-sucedida do ETL, os dados referente ao ativo e qual sua tendencia serão carregados no arquivo CSV resultado_tendencias.csv.
