@@ -30,40 +30,37 @@ def HistoricoTicker(ticket):
   return hist
 
 
+def etl_pipeline(tickers, output_csv_path):
+    today = pd.Timestamp.today().strftime('%Y-%m-%d')
+    # Coletar dados históricos e calcular a média móvel de 20 períodos para cada ticker
+    data = {'Ticker': [], 'Avg': [], 'Date': [], 'Trend': []}
+    
+    for ticker in tickers:
+      # EXTRACT
+      dataTicker = HistoricoTicker(ticker)
+      
+      # Transform
+      sma20 = calculate_20_period_sma(dataTicker)
+      last_close_price = dataTicker['Close'][-1]
+      trend = get_trend(last_close_price,sma20[-1])
+    
+      # Load
+      data['Ticker'].append(ticker)
+      data['Avg'].append(sma20[-1])
+      data['Date'].append(today)
+      data['Trend'].append(trend)
+    
+    # Criação de DataFrame com os dados transformados
+      result_df = pd.DataFrame(data)
+      result_df.to_csv(output_csv_path, index=False)
+
+
 # Definir o caminho do arquivo CSV e a data de hoje
 csv_file_path = 'tickers.csv' 
 output_csv_path = 'resultado_tendencias.csv'
-today = pd.Timestamp.today().strftime('%Y-%m-%d')
 
 # Carregar os tickers do arquivo CSV
 tickers = load_tickers_from_csv(csv_file_path)
-
-# Coletar dados históricos e calcular a média móvel de 20 períodos para cada ticker
-data = {'Ticker': [], 'Avg': [], 'Date': [], 'Trend': []}
-
-
-
-for ticker in tickers:
-  # EXTRACT
-  dataTicker = HistoricoTicker(ticker)
-  
-  # Transform
-  sma20 = calculate_20_period_sma(dataTicker)
-  last_close_price = dataTicker['Close'][-1]
-  trend = get_trend(last_close_price,sma20[-1])
-
-  # Load
-  data['Ticker'].append(ticker)
-  data['Avg'].append(sma20[-1])
-  data['Date'].append(today)
-  data['Trend'].append(trend)
-
-# Criação de DataFrame com os dados transformados
-  result_df = pd.DataFrame(data)
-  result_df.to_csv(output_csv_path, index=False)
-  
-# Carregar tickers do arquivo CSV
-tickers_list = load_tickers_from_csv(input_csv_path)
 
 # Executar o pipeline ETL
 etl_pipeline(tickers_list, output_csv_path)
