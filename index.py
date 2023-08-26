@@ -49,7 +49,7 @@ for ticker in tickers:
   # Transform
   sma20 = calculate_20_period_sma(dataTicker)
   last_close_price = dataTicker['Close'][-1]
-  trend = get_trend(last_closing_price,sma20[-1])
+  trend = get_trend(last_close_price,sma20[-1])
 
   # Load
   data['Ticker'].append(ticker)
