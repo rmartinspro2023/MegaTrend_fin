@@ -1,4 +1,4 @@
-# Projeto ETL 
+# Projeto ETL MegaTrend_fin 
 Este é um exemplo de um processo ETL (Extração, Transformação e Carga) para coletar informações financeiras
 
 ## Requisitos
