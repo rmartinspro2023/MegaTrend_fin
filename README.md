@@ -7,10 +7,12 @@ Biblioteca requests para fazer chamadas à API
 Biblioteca csv para manipulação de arquivos CSV
 Arquivo com nome tickers.csv com a seguinte estrutura
 
+```
 TickerID
 PETR4.SA
 VALE3.SA
 BOVA11.SA
+```
 
 
 ## Passos do ETL
