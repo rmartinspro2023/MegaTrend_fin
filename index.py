@@ -31,7 +31,8 @@ def HistoricoTicker(ticket):
 
 
 # Definir o caminho do arquivo CSV e a data de hoje
-csv_file_path = 'tickers.csv'  # Substitua pelo caminho do seu arquivo CSV
+csv_file_path = 'tickers.csv' 
+output_csv_path = 'resultado_tendencias.csv'
 today = pd.Timestamp.today().strftime('%Y-%m-%d')
 
 # Carregar os tickers do arquivo CSV
