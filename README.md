@@ -31,3 +31,7 @@ Instale as bibliotecas necessárias executando pip install requests e pip instal
 Execute o script index.py.
 ## Resultados
 Após a execução bem-sucedida do ETL, os dados referente ao ativo e qual sua tendencia serão carregados no arquivo CSV resultado_tendencias.csv.
+
+
+Link Colab : https://colab.research.google.com/drive/1M1OOoET0f3Sm0-j8sPN6OU83nhduO84f
+
